@@ -22,6 +22,16 @@ export class AppComponent implements OnInit, OnChanges {
     this.generateDataList(this.cnyValue);
   }
 
+  fixStep(value) {
+    if (!Number.isInteger(value)) {
+      this.step = this.step * 0.1;
+      this.section = this.section * 0.1;
+    } else {
+      this.step = 0.2;
+      this.section = 30;
+    }
+  }
+
   generateDataList(cny, usd?) {
     this.dataList = [];
     if (cny || cny === 0) {

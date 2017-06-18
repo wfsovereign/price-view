@@ -7,7 +7,7 @@
     <div class="col-lg-6">
       <div class="input-group">
         <span class="input-group-addon">$</span>
-        <span class="input-group-addon">{{usdValue}}</span>
+        <span class="input-group-addon">{{usdValue | number:'1.2-5'}}</span>
         <input type="number"
                class="form-control"
                (keydown.enter)="usdConfirm()"
@@ -18,7 +18,7 @@
     <div class="col-lg-6">
       <div class="input-group">
         <span class="input-group-addon">￥</span>
-        <span class="input-group-addon">{{cnyValue}}</span>
+        <span class="input-group-addon">{{cnyValue | number:'1.2-5'}}</span>
         <input type="number"
                class="form-control"
                (keydown.enter)="cnyConfirm()"
