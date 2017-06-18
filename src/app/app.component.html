@@ -1,33 +1,35 @@
 <main class="container">
-  <h1>
-    汇率价格查询
-  </h1>
+  <div class="header">
+    <h1>
+      汇率价格查询
+    </h1>
 
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="input-group">
-        <span class="input-group-addon">$</span>
-        <span class="input-group-addon">{{usdValue | number:'1.2-5'}}</span>
-        <input type="number"
-               class="form-control"
-               (keydown.enter)="usdConfirm()"
-               [(ngModel)]="usdValue"
-               aria-label="Text input with radio button">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <span class="input-group-addon">{{usdValue | number:'1.2-5'}}</span>
+          <input type="number"
+                 class="form-control"
+                 (keydown.enter)="usdConfirm()"
+                 [(ngModel)]="usdValue"
+                 aria-label="Text input with radio button">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="input-group">
+          <span class="input-group-addon">￥</span>
+          <span class="input-group-addon">{{cnyValue | number:'1.2-5'}}</span>
+          <input type="number"
+                 class="form-control"
+                 (keydown.enter)="cnyConfirm()"
+                 [(ngModel)]="cnyValue">
+        </div>
       </div>
     </div>
-    <div class="col-lg-6">
-      <div class="input-group">
-        <span class="input-group-addon">￥</span>
-        <span class="input-group-addon">{{cnyValue | number:'1.2-5'}}</span>
-        <input type="number"
-               class="form-control"
-               (keydown.enter)="cnyConfirm()"
-               [(ngModel)]="cnyValue">
-      </div>
-    </div>
+
   </div>
-
-  <div class="row">
+  <div class="row table-area">
     <app-table [dataList]="dataList.slice(0, dataList.length / 2)" class="col-lg-6"></app-table>
     <app-table [dataList]="dataList.slice(dataList.length / 2, dataList.length)" class="col-lg-6"></app-table>
   </div>
