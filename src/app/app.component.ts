@@ -11,7 +11,7 @@ export class AppComponent implements OnInit, OnChanges {
   usdValue = 50;
   dataList = [];
   exchangeRate = 6.8;
-  section = 30;
+  section = 20;
   step = 0.2;
 
   constructor() {
@@ -22,13 +22,16 @@ export class AppComponent implements OnInit, OnChanges {
     this.generateDataList(this.cnyValue);
   }
 
+  initConfigParams() {
+    this.step = 0.2;
+    this.section = 30;
+  }
+
   fixStep(value) {
+    this.initConfigParams();
     if (!Number.isInteger(value)) {
       this.step = this.step * 0.1;
       this.section = this.section * 0.1;
-    } else {
-      this.step = 0.2;
-      this.section = 30;
     }
   }
 
@@ -36,6 +39,7 @@ export class AppComponent implements OnInit, OnChanges {
     this.dataList = [];
     if (cny || cny === 0) {
       let i = cny;
+      this.fixStep(cny);
       while (i < cny + this.section) {
         this.dataList.push({
           cny: i,
@@ -45,6 +49,7 @@ export class AppComponent implements OnInit, OnChanges {
       }
     } else if (usd) {
       let i = usd;
+      this.fixStep(usd);
       while (i < usd + this.section) {
         this.dataList.push({
           cny: i * this.exchangeRate,
